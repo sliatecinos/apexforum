@@ -16,10 +16,11 @@ class ApexforumSpider(scrapy.Spider):
             'https://answers.ea.com/t5/Problemas-tecnicos/APEX-Legends-fechando-sozinho/td-p/7499624',
             'https://answers.ea.com/t5/Problemas-tecnicos/Problemas-com-conetividade/td-p/7532786',
         ]
-        urlsappend = ['/jump-to/first-unread-message']
-        urls = [end + urlsappend.pop[0] for end in urlstart]
+        urlsappend = '/jump-to/first-unread-message'
+        urls = [end + urlsappend for end in urlstart]
 
         for url in urls:
+            self.log("Crawled url:  %s" % url)
             yield Request(url, callback=self.parse)
 
     def parse(self, response):
