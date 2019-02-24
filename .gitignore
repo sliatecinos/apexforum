@@ -1,3 +1,6 @@
+# Pasta de tutorial
+etc/
+
 # Arquivos de texto
 *.txt
 
@@ -6,9 +9,6 @@
 
 # Arquivos HTML
 *.html
-
-# Pasta vscode
-.vscode/
 
 # Pasta Json
 json/
