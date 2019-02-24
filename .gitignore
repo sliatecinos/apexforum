@@ -1,0 +1,14 @@
+# Arquivos de texto
+*.txt
+
+# Arquivos de log
+*.log
+
+# Arquivos HTML
+*.html
+
+# Pasta vscode
+.vscode/
+
+# Pasta Json
+json/
