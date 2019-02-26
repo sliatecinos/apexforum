@@ -11,7 +11,10 @@ class FLD:
         return s
 
     def unescapeStr(s):
-        s = s.replace('\\r', '')
-        s = s.replace('\\t', '')
-        s = s.replace('\\n', '')
+        s = s.replace('\\r', ' ')
+        s = s.replace('\\t', ' ')
+        s = s.replace('\\n', ' ')
+        s = s.replace('\r', '')
+        s = s.replace('\t', '')
+        s = s.replace('\n', '')
         return s
