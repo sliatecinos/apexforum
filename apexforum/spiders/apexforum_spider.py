@@ -7,28 +7,28 @@ from bs4 import BeautifulSoup
 from scrapy.http.request import Request
 from scrapy import Selector
 
-import logging
-from scrapy.utils.log import configure_logging
+# import logging
+# from scrapy.utils.log import configure_logging
 
-configure_logging(install_root_handler=False)
-logging.basicConfig(
-    filename='apexforumlog.txt',
-    format='%(levelname)s: %(message)s',
-    level=logging.INFO
-)
+# configure_logging(install_root_handler=False)
+# logging.basicConfig(
+#     filename='apexforumlog.txt',
+#     format='%(levelname)s: %(message)s',
+#     level=logging.INFO
+# )
 
 class ApexforumSpider(scrapy.Spider):
     name = "apexforum"
 
     def __init__(self):
-        # url inicial de pesquisa dos fóruns na página:
+        # Incluir a url inicial de pesquisa dos fóruns na página:
         # https://answers.ea.com/t5/Apex-Legends/ct-p/apex-legends-pt
         url = [
-            "https://answers.ea.com/t5/Problemas-tecnicos/Possiveis-solucoes-para-crashes-erros-desconexoes-congelamento/m-p/7571666",
+            'https://answers.ea.com/t5/Problemas-tecnicos/Possiveis-solucoes-para-crashes-erros-desconexoes-congelamento/td-p/7571666',
         ]
         urlsappend = "/jump-to/first-unread-message/"
         self.start_urls = [x + urlsappend for x in url]
-        self.log(["===== Página Crawled-> %s =======" % urllog for urllog in self.start_urls])
+        self.log(["===== Crawled page-> %s =======" % urllog for urllog in self.start_urls])
 
     def parse(self, response):
         """
@@ -59,10 +59,10 @@ class ApexforumSpider(scrapy.Spider):
 
         result_post = [(i.get_text()).strip() for i in soup]
         result_post = [flt.unescapeStr(i) for i in result_post]
-        result_post = [bytes(i, "cp1252").decode("cp1252") for i in result_post]
+        result_post = [bytes(i, "ascii", 'ignore').decode("ascii") for i in result_post]
         final_post = [flt.unescapeXml(i) for i in result_post]
 
-        result_date = [i.encode("ascii",'ignore').decode("unicode_escape") for i in datepost]
+        result_date = [i.encode("ascii", 'ignore').decode("unicode_escape") for i in datepost]
 
         # Output das variáveis com os dados
         for apex in range(len(final_post)):
@@ -78,5 +78,5 @@ class ApexforumSpider(scrapy.Spider):
         # Loop para paginação do mesmo tópico, em seguida vai para o próximo
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
-        # elif next_topic is not None:
-        #     yield response.follow(next_topic, callback=self.parse)
+        elif next_topic is not None:
+            yield response.follow(next_topic, callback=self.parse)
