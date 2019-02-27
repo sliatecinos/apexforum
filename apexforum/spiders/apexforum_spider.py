@@ -7,9 +7,11 @@ from bs4 import BeautifulSoup
 from scrapy.http.request import Request
 from scrapy import Selector
 
+# Bloco comentado de importação do módulo de Log do Scrapy
 # import logging
 # from scrapy.utils.log import configure_logging
 
+# Configuração default do log
 # configure_logging(install_root_handler=False)
 # logging.basicConfig(
 #     filename='apexforumlog.txt',
@@ -43,7 +45,6 @@ class ApexforumSpider(scrapy.Spider):
         datepost = response.xpath('//span[@class="DateTime lia-message-posted-on lia-component-common-widget-date"]//span//@title').getall()
         next_topic = response.xpath('//li[@class="lia-paging-page-next lia-component-next"]//a[@class="lia-link-navigation"]//@href').get()
         next_page = response.xpath('//li[@class="lia-paging-page-next lia-component-next"]//a[@aria-label="Próxima página"]//@href').get()
-        # idpost = response.xpath('//div[@class="lia-quilt-row lia-quilt-row-forum-title-row"]//div//div//div//div//div[0]').extract()
 
         # Função "build-in" decode para interpretação dos caracteres utf-8
         # e funções de limpeza de caracteres não-interpretáveis
