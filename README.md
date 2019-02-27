@@ -6,9 +6,9 @@ Este projeto é um spider de captura dos posts realizados pelos usuários no sit
 ## Funcionamento
 Primeiro define-se na lista `url` o endereço da página do primeiro tópico que será usada para a navegação inicial do spider _apexforum\spiders\apexforum.py_:
 
-> `url = [`
-> `           'https://answers.ea.com/t5/Problemas-tecnicos/Possiveis-solucoes-para-crashes-erros-desconexoes-congelamento/td-p/7571666',`
->`        ]`
+> `url = [
+>            'https://answers.ea.com/t5/Problemas-tecnicos/Possiveis-solucoes-para-crashes-erros-desconexoes-congelamento/td-p/7571666',
+>        ]`
 
 O mesmo arquivo spider fará toda a paginação a partir daí:
 - _primeiro navegar dentro de cada página do mesmo tópico (usando o link "SEGUINTE", no final dos tópicos);_
