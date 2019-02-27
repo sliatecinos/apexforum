@@ -3,6 +3,17 @@
 ## Descrição
 Este projeto é um spider de captura dos posts realizados pelos usuários no site de fóruns do novo game "Apex Legends", localizados no site [Apex Legends Fóruns](https://answers.ea.com/t5/Apex-Legends/ct-p/apex-legends-pt).
 
+## Dados capturados
+|Coluna|Dados|
+|:---:|:---:|
+|forum_url|Url da página do fórum|
+|forum_topic|Descrição do tópico|
+|forum_title|Título do tópico|
+|forum_post_date|Data da postagem|
+|forum_kudos|Kudo points atribuídos ao post|
+|forum_user|Usuário da postagem|
+|forum_posts|Mensagem postada|
+
 ## Funcionamento
 Primeiro define-se na lista `url` o endereço da página do primeiro tópico que será usada para a navegação inicial do spider _apexforum\spiders\apexforum.py_:
 
@@ -25,7 +36,7 @@ Tal navegação pode ser explicada pelo trecho em _apexforum.py_:
 ```
 
 ## Instalação
-Descompacte o projeto para a sua pasta que será acessada pelo framework Scrapy do Python ([instalação e documentação do Scrapy aqui](https://docs.scrapy.org/en/latest/intro/overview.html)).
+Descompacte o projeto para a sua pasta que será acessada pelo framework Scrapy do Python ([instalação e tutorial do Scrapy aqui](https://docs.scrapy.org/en/latest/intro/overview.html)).
 
 Em seguida, execute o comando de "crawl" via conda prompt, como no exemplo abaixo que salva os dados capturados no formato JSON, dentro do diretório _json_ (criado na mesma pasta acessada pelo Scrapy):
 ```

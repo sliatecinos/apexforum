@@ -1,6 +1,6 @@
 class FLD:
     """
-    Ferramenta destinada a limpeza dos dados scrapeados do site
+    Ferramenta auxiliar destinada a limpeza dos dados scrapeados do site
     """
 
     def unescapeXml(s):
