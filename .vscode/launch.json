@@ -5,17 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Scrapy Shell",
+            "name": "ApexForum Shell",
             "type": "python",
             "request": "launch",
             "module": "scrapy",
             "args": [
                 "shell",
-                "\"https://answers.ea.com/t5/Problemas-tecnicos/APEX-Legends-fechando-sozinho/td-p/7499624\""
+                '"https://answers.ea.com/t5/Informacoes-de-jogos/Saudacoes-legends-Bem-vindos-a-comunidade-Apex/td-p/7443637"',
+                "-s AUTOTHROTTLE_ENABLED=1"
             ]
         },
         {
-            "name": "Scrapy Crawl",
+            "name": "ApexForum Crawl",
             "type": "python",
             "request": "launch",
             "module": "scrapy",
@@ -23,7 +24,7 @@
                 "crawl",
                 "apexforum",
                 "-o",
-                "apexforum.json"
+                "json/apexforum.json"
             ]
         },
         {
